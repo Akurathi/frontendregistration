@@ -31,7 +31,7 @@ function App() {
           <Route path="/home/:username" component={HomePage} />
           <Route path="/registration" component={RegistrationForm} />
           {/* <Route path="/registrationFormDeatils" component={RegistrationFormDetails} /> */}
-          <Route path="/registrationFormDeatils/:id/:username/:email" component={RegistrationFormDetails} />
+          <Route path="/registrationFormDeatils/:id/:username/:email/:firstName/:lastName" component={RegistrationFormDetails} />
           <Route path="/" component={LoginPage} />
           
           
@@ -45,6 +45,9 @@ function App() {
           </Route> */}
         </Switch>
       </Router>
+      <footer>
+        <h3>Developed by Sravani Goli</h3>
+      </footer>
     </div>
   );
 }

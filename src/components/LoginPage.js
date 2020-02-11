@@ -34,13 +34,18 @@ export default class LoginPage extends Component{
 
         event.preventDefault();
 
-        var url = "http://ec2-18-188-184-95.us-east-2.compute.amazonaws.com:8084/login/?username="+this.state.username+"&password="+this.state.password;
+        // var url = "http://ec2-18-188-184-95.us-east-2.compute.amazonaws.com:8084/login/?username="+this.state.username+"&password="+this.state.password;
+        
+        const url = "http://ec2-18-188-184-95.us-east-2.compute.amazonaws.com:8084/login/?username="+this.state.username+"&password="+this.state.password;
         console.log(url);
         axios
           .post(url)
           .then(res => {
             const resp = res.data;
-            console.log(resp);
+            console.log(resp +" resp");
+            if(resp === "not available")
+              alert("provided information is not available in DB")
+
             this.setState({ status: resp });
             // if(resp === "Login success")
             // {
@@ -48,6 +53,10 @@ export default class LoginPage extends Component{
             //  return <Redirect to='/home' />
             // }
           });
+
+          console.log("status "+this.state.status)
+
+          // if()
 
         //   console.log(this.state.status+ "----------");
 
@@ -80,11 +89,19 @@ export default class LoginPage extends Component{
               <div>
                   <div>Login for getting the acccess</div>
                   <form onSubmit={this.submitForm}>
-                      {/* <label>username</label> */}
-                      Username <input id="username" name="username" type="text" onChange={this.handleChange}></input><br></br>
-                      {/* <label>Password</label> */}
-                      Password <input id="password" name="password" type="text" onChange={this.handleChange} style={{position: 'relative',left: '8px'}}></input><br></br>
-                      <button name="submit">Submit</button>
+                    <table>
+                      <tr>
+                        <th><label>username</label></th>
+                        <th><input id="username" name="username" type="text" onChange={this.handleChange}></input></th>
+                      </tr>
+                      <tr>
+                        <th><label>Password</label></th>
+                        <th><input id="password" name="password" type="password" onChange={this.handleChange} ></input></th>
+                      </tr>
+                       
+                    </table>
+                    
+                    <button name="submit">Submit</button>
                   </form>
                   { console.log(this.state.username)}
                   <button onClick={this.submitBtn}>Registration Form</button>

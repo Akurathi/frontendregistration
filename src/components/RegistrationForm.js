@@ -14,6 +14,8 @@ export default class RegistrationForm extends Component{
             password : "",
             cancelActive : false,
             emailValid : false,
+            lastName : "",
+            firstName : "",
 
             responseData : []
 
@@ -49,7 +51,8 @@ export default class RegistrationForm extends Component{
         if(this.state.email !== null){
             if(this.state.email.endsWith('@gmail.com') || this.state.email.endsWith('@hotmail.com') || this.state.email.endsWith('@yahoo.com'))
         {
-            var url = "http://ec2-18-188-184-95.us-east-2.compute.amazonaws.com:8084/?username=" +this.state.username+"&password="+this.state.password+"&email="+this.state.email;
+            //var url = "http://ec2-18-188-184-95.us-east-2.compute.amazonaws.com:8084/?username=" +this.state.username+"&password="+this.state.password+"&email="+this.state.email;
+            var url = "http://ec2-18-188-184-95.us-east-2.compute.amazonaws.com:8084/?username="+this.state.username+"&password="+this.state.password+"&email="+this.state.email+"&firstName="+this.state.firstName+"&lastName="+this.state.lastName;
             console.log(url);
             axios
               .post(url)
@@ -81,7 +84,8 @@ export default class RegistrationForm extends Component{
         if(this.state.responseData.status === "successful")
         {
             console.log("success+++++++++++")
-            return <Redirect to={`/registrationFormDeatils/${this.state.responseData.id}/${this.state.responseData.userName}/${this.state.responseData.email}`}/>
+            console.log(this.state.responseData)
+            return <Redirect to={`/registrationFormDeatils/${this.state.responseData.id}/${this.state.responseData.userName}/${this.state.responseData.email}/${this.state.responseData.firstName}/${this.state.responseData.lastName}`}/>
             // return <Redirect to={"/registrationFormDeatils/" }/>
         }
 
@@ -97,17 +101,44 @@ export default class RegistrationForm extends Component{
         return(
             <div>
                 <form onSubmit={this.submitForm}>
-                {/* <label>username</label> */}
-                Username <input id="username" name="username" type="text" onChange={this.handleChange} style={{}}></input><br></br>
-                {/* <label>Password</label> */}
-                Password <input id="password" name="password" type="text" onChange={this.handleChange} style={{position: 'relative', left: '4px'}}></input><br></br>
-                {/* <label>email</label> */}
-                Email <input id="email" name="email" type="text" onChange={this.handleChange} style={{position: 'relative', left: '47px'}}></input><br></br>
+                <table >
+                {/* style={{position: 'relative',left: '9px'}} */}
+                    <tr>
+                        <th><label>Username</label></th>
+                        <th><input id="username" name="username" type="text" onChange={this.handleChange} ></input></th>
+                    </tr>
+                    {/* style={{position: 'relative', left: '15px'}} */}
+                    <tr>
+                        <th><label>Password</label></th>
+                        <th> <input id="password" name="password" type="password" onChange={this.handleChange} ></input></th>
+                    </tr>
+                    
+                    {/* style={{position: 'relative', left: '47px'}} */}
+                    <tr>
+                        <th><label>Email</label></th>
+                        <th><input id="email" name="email" type="text" onChange={this.handleChange} ></input></th>
+                    </tr>
+                    
+                    {/* style={{position: 'relative', left: '9px'}} */}
+
+                    <tr>
+                        <th><label>FirstName</label></th>
+                        <th><input id="firstName" name="firstName" type="text" onChange={this.handleChange} ></input></th>
+                    </tr>
+
+                    {/* style={{position: 'relative', left: '11px'}} */}
+
+                    <tr>
+                        <th><label>LastName</label></th>
+                        <th><input id="lastName" name="lastName" type="text" onChange={this.handleChange} ></input></th>
+                    </tr>
+                </table>
                 <div style={{position: 'relative', top: '30px'}}>
                 <button name="submit" >Submit</button>
 
                 <button name="cancel" onClick={this.cancelBtn} style={{position: 'relative', left: '158px'}}>Cancel</button>
                 </div>
+                
                 </form>
 
                 
