@@ -49,7 +49,7 @@ export default class RegistrationForm extends Component{
         if(this.state.email !== null){
             if(this.state.email.endsWith('@gmail.com') || this.state.email.endsWith('@hotmail.com') || this.state.email.endsWith('@yahoo.com'))
         {
-            var url = "http://localhost:8083/?username=" +this.state.username+"&password="+this.state.password+"&email="+this.state.email;
+            var url = "http://ec2-18-188-184-95.us-east-2.compute.amazonaws.com:8084/?username=" +this.state.username+"&password="+this.state.password+"&email="+this.state.email;
             console.log(url);
             axios
               .post(url)

@@ -34,7 +34,7 @@ export default class LoginPage extends Component{
 
         event.preventDefault();
 
-        var url = "http://localhost:8083/login/?username="+this.state.username+"&password="+this.state.password;
+        var url = "http://ec2-18-188-184-95.us-east-2.compute.amazonaws.com:8084/login/?username="+this.state.username+"&password="+this.state.password;
         console.log(url);
         axios
           .post(url)
