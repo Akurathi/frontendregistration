@@ -27,6 +27,7 @@ export default class LoginPage extends Component{
             .get(url)
             .then(res => {
                 // console.log(res)
+                console.log(res.data)
               this.setState({ userInfo: res.data});
             });
 
@@ -58,6 +59,7 @@ export default class LoginPage extends Component{
                 <h1>Welcome to HomePage</h1>
                 <h3>first name : {this.state.userInfo.firstName} </h3>
                 <h3>last name : {this.state.userInfo.lastName} </h3>
+                <h3>uploaded file word count : {this.state.userInfo.wordCount}</h3>
                 <button onClick={this.LogoutBtn}>Logout</button>
             </div>
         );

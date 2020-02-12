@@ -13,36 +13,16 @@ function App() {
     
       <header >
         <h1>Assignment - 1</h1>
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
+        
       </header> 
       <Router>
         <Switch>
           <Route path="/home/:username" component={HomePage} />
           <Route path="/registration" component={RegistrationForm} />
           {/* <Route path="/registrationFormDeatils" component={RegistrationFormDetails} /> */}
-          <Route path="/registrationFormDeatils/:id/:username/:email/:firstName/:lastName" component={RegistrationFormDetails} />
+          <Route path="/registrationFormDeatils/:id/:username/:email/:firstName/:lastName/:wordCount" component={RegistrationFormDetails} />
           <Route path="/" component={LoginPage} />
           
-          
-          
-          {/* <Route exact path="/home">
-            <HomePage />
-          </Route>
-
-          <Route exact path="/">
-            <LoginPage />
-          </Route> */}
         </Switch>
       </Router>
       <footer>
