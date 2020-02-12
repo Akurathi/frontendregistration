@@ -73,6 +73,7 @@ export default class RegistrationForm extends Component{
                 this.setState({wrongFormatFile : true})
             }
             else{
+                this.setState({wrongFormatFile : false})
                 this.setState({wordCount : res.data })
             }
                 
@@ -130,7 +131,7 @@ export default class RegistrationForm extends Component{
                 
             });
             
-            var fileUrl = "http://localhost:8084/findTextCount/?file="+this.state.file;
+            var fileUrl = "http://ec2-18-188-184-95.us-east-2.compute.amazonaws.com:8084/findTextCount/?file="+this.state.file;
             axios.get(fileUrl).then(res => console.log(res))
 
         }
